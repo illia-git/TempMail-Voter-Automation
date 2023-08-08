@@ -1,50 +1,43 @@
 # TempMail Voter Automation
 
-## Description
-`TempMail Voter Automation` is a Node.js script designed to automate the process of creating temporary email addresses using the TempMail.lol API, casting votes on the WaysConf platform, and confirming those votes through email verification. The script is set to run in a loop, allowing for multiple votes to be cast using different email addresses.
+This script automates the process of voting for a project on `vote.waysconf.com`. It uses temporary email addresses to vote for a specific project and then confirms the vote by accessing the verification link sent to the email.
+
+## Background
+
+This code was created during my employment at Artegence (Efigence). I was motivated by an email from our CEO asking us to vote for our company to secure the first place. Eager to make a significant impact, I noticed that the platform lacked protections like Captcha. I immediately began crafting this code. It's essential to note that this initiative was entirely my own and was not requested by anyone at Artegence. I alone am responsible for this action, and no one else should be held accountable.
 
 ## Features
-- **Automated Email Creation**: Generates temporary email addresses seamlessly.
-- **Automated Voting**: Casts votes on the WaysConf platform using the generated email addresses.
-- **Email Verification**: Waits for the confirmation email and automatically confirms the vote.
-- **Looped Execution**: The entire process can be repeated multiple times without manual intervention.
 
-## Setup & Installation
+- Uses `tempmail.lol` to generate temporary email addresses.
+- Votes for a specific project using the provided project ID.
+- Waits for the confirmation email to arrive.
+- Extracts the confirmation link from the email and confirms the vote.
+- Supports parallel execution to speed up the voting process.
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/illia-git/TempMail-Voter-Automation.git
-   ```
+## Dependencies
 
-2. **Navigate to the Directory**:
-   ```bash
-   cd TempMail-Voter-Automation
-   ```
+- `axios`: For making HTTP requests.
+- `cheerio`: For parsing and manipulating HTML content.
+- `tempmail.lol`: For generating temporary email addresses.
 
-3. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+## How to Use
 
-4. **Run the Script**:
-   ```bash
-   node main.mjs
-   ```
+1. Ensure you have Node.js installed.
+2. Clone the repository.
+3. Install the required dependencies using `npm install`.
+4. Run the script using `node main.mjs`.
 
-## Usage
+## Configuration
 
-Once you've set up the script, it will:
-1. Create a new temporary email address.
-2. Use this email to cast a vote on the WaysConf platform.
-3. Wait for the confirmation email.
-4. Confirm the vote by simulating the confirmation click.
-5. Repeat the process for a specified number of iterations.
+The script contains several constants that can be modified:
 
-## Customization
+- `VOTE_API_URL`: The API endpoint for voting.
+- `REFERRER_URL`: The referrer URL.
+- `PROJECT_ID`: The ID of the project you want to vote for.
+- `EMAIL_WAIT_TIME`: The time to wait for the confirmation email (default is 10 seconds).
+- `PARALLEL_EXECUTION_COUNT`: The number of parallel executions.
+- `DELAY_BETWEEN_EXECUTIONS`: The delay between each execution in parallel mode.
 
-- **Number of Iterations**: You can change the number of iterations by modifying the loop count in the main function.
-- **Wait Time**: Adjust the `EMAIL_WAIT_TIME` constant if you want to change the waiting duration for the confirmation email.
+## Disclaimer
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please use this script responsibly and ethically. Automating votes can be against the terms of service of many platforms. Ensure you have the necessary permissions and are not violating any rules or terms of service.
